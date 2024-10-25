@@ -15,13 +15,13 @@ public class Usuario {
     String apellido;
     String user;
     String pass;
-    String estado;
+    int estado;
     int idgrupo;
 
     public Usuario() {
     }
 
-    public Usuario(int id, String nombre, String apellido, String user, String pass, String estado, int idgrupo) {
+    public Usuario(int id, String nombre, String apellido, String user, String pass, int estado, int idgrupo) {
         this.id = id;
         this.nombre = nombre;
         this.apellido = apellido;
@@ -71,11 +71,11 @@ public class Usuario {
         this.pass = pass;
     }
 
-    public String getEstado() {
+    public int getEstado() {
         return estado;
     }
 
-    public void setEstado(String estado) {
+    public void setEstado(int estado) {
         this.estado = estado;
     }
 

@@ -18,10 +18,12 @@ import javax.swing.JOptionPane;
 public class Conector {
 
     //Declaracion de variables que se utilizaran en la conexion
-    private String driver = "com.mysql.jdbc.Driver";
+    private String driver = "oracle.jdbc.driver.OracleDriver";
     private String servidor = "127.0.0.1";
-    private String usuario = "root";
-    private String password = "Jonathan1$";
+    private String puerto = "1521";
+    private String sid = "xe";
+    private String usuario = "JOHN7";
+    private String password = "JOHN7";
     private String bd = "bd_webs";
     private String cadena;
 
@@ -33,7 +35,7 @@ public class Conector {
 
     //Metodo para conectar 
     public Connection conectar() {
-        this.cadena = "jdbc:mysql://" + this.servidor + "/" + this.bd;
+        this.cadena = "jdbc:oracle:thin:@" + this.servidor + ":" + this.puerto + ":" + this.sid;
         try {
             Class.forName(this.driver).newInstance();
             this.con = DriverManager.getConnection(this.cadena, this.usuario, this.password);

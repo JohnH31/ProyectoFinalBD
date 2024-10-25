@@ -196,7 +196,7 @@ public class Controlador extends HttpServlet {
                     u.setApellido(apellidos);
                     u.setUser(usuario);
                     u.setPass(password);
-                    u.setEstado(estado);
+                    u.setEstado(Integer.parseInt(estado));
                     u.setIdgrupo(Integer.parseInt(idgrupo));
                     uao.agregar(u);
                     request.getRequestDispatcher("Controlador?menu=usuarios&accion=Listar").forward(request, response);
@@ -214,7 +214,7 @@ public class Controlador extends HttpServlet {
                     u.setApellido(apellidos1);
                     u.setUser(usuario1);
                     u.setPass(password1);
-                    u.setEstado(estado1);
+                    u.setEstado(Integer.parseInt(estado1));
                     u.setIdgrupo(Integer.parseInt(idgrupo1));
                     uao.actualizar(u);
                     request.getRequestDispatcher("Controlador?menu=usuarios&accion=Listar").forward(request, response);

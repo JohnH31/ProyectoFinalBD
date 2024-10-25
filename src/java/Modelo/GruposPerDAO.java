@@ -48,21 +48,15 @@ public class GruposPerDAO {
 
     public int agregar(GruposPer p) {
         int r = 0;
-        String sql = "INSERT INTO tbl_gruposPermisos(id_grupoPer,id_grupo_fk,id_permiso_fk)VALUE(?,?,?)";
+        String sql = "INSERT INTO tbl_gruposPermisos(id_grupoPer,id_grupo_fk,id_permiso_fk) VALUES(seq_gruposPermisos.NEXTVAL,?,?)";
         try {
             con = c.conectar();
             ps = con.prepareStatement(sql);
-            ps.setInt(1, p.getId());
-            ps.setInt(2, p.getIdgrupo());
-            ps.setInt(3, p.getIdper());
+            ps.setInt(1, p.getIdgrupo());
+            ps.setInt(2, p.getIdper());
             r = ps.executeUpdate();
-            if (r == 1) {
-                r = 1;
-            } else {
-                r = 0;
-            }
         } catch (Exception e) {
-
+            System.out.println("Error al agregar: " + e.getMessage());
         }
         return r;
     }
@@ -99,16 +93,15 @@ public class GruposPerDAO {
     }
 
     public void eliminar(GruposPer p) {
-        Conector c = new Conector();
+        String sql = "DELETE FROM tbl_gruposPermisos WHERE id_grupoPer = ?";
         try {
-            c.conectar();
-            String consulta = "DELETE FROM tbl_gruposPermisos WHERE id_grupoPer =" + p.getId() + ";";
-            c.consultas_multiples(consulta);
-
+            con = c.conectar();
+            ps = con.prepareStatement(sql);
+            ps.setInt(1, p.getId());
+            ps.executeUpdate();
         } catch (Exception e) {
             System.out.println("Mensaje eliminar " + e.getMessage());
         }
-        c.desconectar();
     }
 
     public DefaultTableModel leer() {

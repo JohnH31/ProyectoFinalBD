@@ -99,6 +99,7 @@ public class Validar extends HttpServlet {
             String user = request.getParameter("txtuser");
             String pass = request.getParameter("txtpass");
             us = udao.validar(user, pass);
+              //  System.out.println(us.getNombre());
             List<GruposPer> datos = udao.Validar2(us.getNombre());
             //System.out.println(datos);
             bot.setClientes("");
@@ -128,7 +129,7 @@ public class Validar extends HttpServlet {
                 if (!datos.contains(6)) {
                     bot.setRecibos("none");
                 }
-                if (!datos.contains(7)) {
+                if (!datos.contains(8)) {
                     bot.setReportes("none");
                 }
                 request.setAttribute("usuario", us);
